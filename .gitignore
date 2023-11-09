@@ -3,3 +3,10 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+.idea/
+
+API/feedify.db
+
+API/feedify.db-shm
+
+API/feedify.db-wal
