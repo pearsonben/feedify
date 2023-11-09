@@ -1,6 +1,6 @@
 ﻿namespace API.Controllers;
 
-public class FeedController
+public class FeedController : ApiControllerBase
 {
     
 }

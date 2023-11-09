@@ -1,4 +1,4 @@
-﻿namespace API.Core.Services;
+﻿namespace API.Core.Services.Authentication;
 
 public interface IAuthenticationService
 {
