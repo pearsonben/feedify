@@ -59,7 +59,7 @@ export default function Navbar() {
         bg={useColorModeValue("primary.500", "primary.500")}
         px={4}
       >
-        <Flex gap={4} alignItems={"center"} h={16}>
+        <Flex gap={4} w={"100%"} justifyContent={"space-between"} alignItems={"center"} h={16}>
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -67,7 +67,7 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack  flex={1} spacing={8} alignItems={"center"}>
             <Box>
               <Link to={"/"}>
                 <HStack>
@@ -88,8 +88,8 @@ export default function Navbar() {
               </Link>
             </Box>
           </HStack>
-          <Spacer />
-          <HStack border={"2px solid red"} display={{ base: "none", md: "flex" }}>
+          
+          <HStack maxW={"2xl"} alignContent={"center"}  justifyContent={"center"} display={{ base: "none", md: "flex" }}>
             {LinkItems.map((link) => (
               <Link to={link.path}>
                 <Box borderBottomWidth={link.isActive ? "3px": "none"} borderBottomColor={"dark.50"} >
@@ -116,8 +116,8 @@ export default function Navbar() {
               </Link>
             ))}
           </HStack>
-          <Spacer />
-          <Flex gap={2} alignItems={"center"}>
+          
+          <Flex flex={1} gap={2} justifyContent={"end"} alignItems={"center"}>
             <Box display={{ base: "none", lg: "flex" }}>
               <NavbarSearch />
             </Box>

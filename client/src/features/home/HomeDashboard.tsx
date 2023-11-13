@@ -6,7 +6,7 @@ export default function HomeDashboard() {
   return (
     <>
       <PageLayout title="Dashboard">
-        <Flex w={"100%"}>
+        <Flex w={"100%"} justifyContent={"center"}>
           <Spacer />
           <PostsList />
           <Spacer />
