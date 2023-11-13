@@ -64,7 +64,7 @@ const posts: UserPost[] = [
 export default function PostsList() {
   return (
     <Box
-      maxW={"6xl"}
+      w={"2xl"}
       sx={{ borderRadius: "4px" }}
       p={6}
       bg={useColorModeValue("dark.50", "dark.800")}

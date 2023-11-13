@@ -8,7 +8,7 @@ interface PageLayoutProps {
 
 export default function PageLayout({ title, children }: PageLayoutProps) {
   return (
-    <Box>
+    <Box mt={20}>
       {title && <PageTitle title={title}></PageTitle>}
       <Box mt={6}>{children}</Box>
     </Box>

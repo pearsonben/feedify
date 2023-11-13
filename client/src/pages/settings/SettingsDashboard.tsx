@@ -1,6 +1,5 @@
-
-
+import PageLayout from "../../components/layout/PageLayout";
 
 export default function SettingsDashboard() {
-    return <h1>This is the settings dashboard.</h1>
+  return <PageLayout title="This is the settings dashboard">settings page</PageLayout>;
 }

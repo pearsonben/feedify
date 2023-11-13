@@ -1,5 +1,5 @@
 
-import { Text, Flex, Box, Avatar, Heading, Spacer, IconButton } from '@chakra-ui/react'
+import { Text, Flex, Box, Avatar, Heading, IconButton } from '@chakra-ui/react'
 
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai'
 import { BsThreeDotsVertical } from 'react-icons/bs'
@@ -30,7 +30,7 @@ function CommentCardHeader({name, iconSource, liked}: CommentCardHeaderProps) {
           colorScheme="gray"
           variant="ghost"
           aria-label="like"
-          color={"red.400"}
+          color={"primary.300"}
           icon={liked ? <AiFillHeart /> : <AiOutlineHeart />}
         ></IconButton>
         <IconButton
