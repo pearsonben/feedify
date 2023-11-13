@@ -5,7 +5,7 @@ import { Flex, Spacer } from "@chakra-ui/react";
 export default function HomeDashboard() {
   return (
     <>
-      <PageLayout title="Dashboard">
+      <PageLayout>
         <Flex w={"100%"} justifyContent={"center"}>
           <Spacer />
           <PostsList />

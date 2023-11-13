@@ -5,7 +5,6 @@ import {
   Flex,
   Avatar,
   HStack,
-  Text,
   IconButton,
   Button,
   Menu,
@@ -15,9 +14,7 @@ import {
   MenuDivider,
   useDisclosure,
   useColorModeValue,
-  Icon,
   useColorMode,
-  Spacer,
 } from "@chakra-ui/react";
 import {
   HamburgerIcon,
@@ -26,12 +23,12 @@ import {
   SunIcon,
   SearchIcon,
 } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
-import { BsBookmarkFill } from "react-icons/bs";
 import NavbarSearch from "./NavbarSearch";
 import MobileNavbar from "./MobileNavbar";
 import { FiCompass, FiHome, FiStar, FiTrendingUp } from "react-icons/fi";
 import { IconType } from "react-icons";
+import NavbarLogo from "./NavbarLogo";
+import NavbarLink from "./NavbarLink";
 
 interface LinkItemProps {
   name: string;
@@ -68,52 +65,12 @@ export default function Navbar() {
             onClick={isOpen ? onClose : onOpen}
           />
           <HStack  flex={1} spacing={8} alignItems={"center"}>
-            <Box>
-              <Link to={"/"}>
-                <HStack>
-                  <Icon
-                    color={useColorModeValue("primary.300", "primary.300")}
-                    as={BsBookmarkFill}
-                  ></Icon>
-
-                  <Text
-                    fontSize="2xl"
-                    fontFamily="monospace"
-                    fontWeight="bold"
-                    color={"dark.50"}
-                  >
-                    Bookify
-                  </Text>
-                </HStack>
-              </Link>
-            </Box>
+            <NavbarLogo />
           </HStack>
           
           <HStack maxW={"2xl"} alignContent={"center"}  justifyContent={"center"} display={{ base: "none", md: "flex" }}>
             {LinkItems.map((link) => (
-              <Link to={link.path}>
-                <Box borderBottomWidth={link.isActive ? "3px": "none"} borderBottomColor={"dark.50"} >
-                  <IconButton
-                    px={8}
-                    size="lg"
-                    variant="ghost"
-                    aria-label="Search"
-                    _hover={{
-                      bg: "primary.300",
-                    }}
-                    color={"dark.50"}
-                    icon={
-                      <Icon
-                        size={"lg"}
-                        _groupHover={{
-                          color: "white",
-                        }}
-                        as={link.icon}
-                      />
-                    }
-                  />
-                </Box>
-              </Link>
+                <NavbarLink icon={link.icon} path={link.path} name={link.name} isActive={link.isActive} />
             ))}
           </HStack>
           

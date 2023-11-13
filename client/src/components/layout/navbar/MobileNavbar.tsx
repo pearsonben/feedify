@@ -1,7 +1,7 @@
-import { Box, Flex, Icon, Stack } from "@chakra-ui/react";
+import { Box, Stack } from "@chakra-ui/react";
 import NavbarSearch from "./NavbarSearch";
 import { IconType } from "react-icons";
-import { Link } from "react-router-dom";
+import MobileNavbarLink from "./MobileNavbarLink";
 
 interface LinkItemProps {
   name: string;
@@ -21,40 +21,7 @@ function MobileNavbar({ links, closeNav }: MobileNavbarProps) {
         <NavbarSearch />
 
         {links.map((link) => (
-          <Link to={link.path}>
-            <Box
-              as="a"
-              href="#"
-              style={{ textDecoration: "none" }}
-              _focus={{ boxShadow: "none" }}
-              onClick={closeNav}
-            >
-              <Flex
-                align="center"
-                p="4"
-                mx="4"
-                borderRadius="lg"
-                role="group"
-                cursor="pointer"
-                fontWeight={"semibold"}
-                _hover={{
-                  bg: "primary.300",
-                  color: "dark.50",
-                }}
-                color={"dark.50"}
-              >
-                <Icon
-                  mr="4"
-                  fontSize="16"
-                  _groupHover={{
-                    color: "white",
-                  }}
-                  as={link.icon}
-                />
-                {link.name}
-              </Flex>
-            </Box>
-          </Link>
+          <MobileNavbarLink closeNav={closeNav} icon={link.icon} name={link.name} path={link.path} />
         ))}
       </Stack>
     </Box>
