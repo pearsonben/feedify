@@ -43,7 +43,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
           <Link to={"/"}>
             <HStack spacing={{ base: "1" }}>
               <Icon
-                color={useColorModeValue("primary.300", "primary.300")}
+                color={useColorModeValue("yellow.800", "yellow.800")}
                 as={BsBookmarkFill}
               ></Icon>
               <Text
