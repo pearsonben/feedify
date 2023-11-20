@@ -1,5 +1,5 @@
 import { Divider, VStack, useColorModeValue } from "@chakra-ui/react";
-import { PostComment } from "../../../../models/post";
+import { PostComment } from "../../../../models/api/post";
 import CommentCard from "./CommentCard";
 
 interface CommentListProps {

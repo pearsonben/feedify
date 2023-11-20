@@ -1,4 +1,4 @@
-import { PostType } from "../enums/enums";
+import { PostType } from "../../enums/enums";
 
 
 

@@ -7,10 +7,9 @@ import Navbar from "./navbar/Navbar";
 
 const Layout = () => {
   return (
-    <Box minH="100vh" bg={useColorModeValue("dark.100", "dark.900")}>
+    <Box minH="100vh" bg={useColorModeValue("gray.200", "gray.800")}>
       <Navbar />
-
-      <Box p={4}>
+      <Box pt={4}>
         <Outlet />
       </Box>
     </Box>

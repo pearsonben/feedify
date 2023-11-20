@@ -10,7 +10,7 @@ import { PostType } from "../../enums/enums";
 import PostCardBody from "./postcard/PostCardBody";
 import PostCardHeader from "./postcard/PostCardHeader";
 import { BsFillChatDotsFill } from "react-icons/bs";
-import { PostComment } from "../../models/post";
+import { PostComment } from "../../models/api/post";
 import CommentList from "./postcard/comment/CommentList";
 
 export interface IPostCardProps {

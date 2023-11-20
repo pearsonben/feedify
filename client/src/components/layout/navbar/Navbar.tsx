@@ -25,27 +25,20 @@ import {
 } from "@chakra-ui/icons";
 import NavbarSearch from "./NavbarSearch";
 import MobileNavbar from "./MobileNavbar";
-import { FiCompass, FiHome, FiStar, FiTrendingUp } from "react-icons/fi";
-import { IconType } from "react-icons";
+
 import NavbarLogo from "./NavbarLogo";
 import NavbarLink from "./NavbarLink";
-
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-  path: string;
-  isActive?: boolean;
-}
-const LinkItems: LinkItemProps[] = [
-  { name: "Home", icon: FiHome, path: "/", isActive: true },
-  { name: "Trending", icon: FiTrendingUp, path: "trending" },
-  { name: "Explore", icon: FiCompass, path: "/explore" },
-  { name: "Favourites", icon: FiStar, path: "favourites" },
-];
+import { useNavbarStore } from "../../../stores/navbarStore";
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
+
+  const { tabs, activeTab, setActiveTab } = useNavbarStore((state) => ({
+    tabs: state.tabs,
+    activeTab: state.activeTab,
+    setActiveTab: state.setActiveTab,
+  }));
 
   return (
     <>
@@ -56,7 +49,13 @@ export default function Navbar() {
         bg={useColorModeValue("primary.500", "primary.500")}
         px={4}
       >
-        <Flex gap={4} w={"100%"} justifyContent={"space-between"} alignItems={"center"} h={16}>
+        <Flex
+          gap={4}
+          w={"100%"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          h={16}
+        >
           <IconButton
             size={"md"}
             icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
@@ -64,16 +63,21 @@ export default function Navbar() {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack  flex={1} spacing={8} alignItems={"center"}>
+          <HStack flex={1} spacing={8} alignItems={"center"}>
             <NavbarLogo />
           </HStack>
-          
-          <HStack maxW={"2xl"} alignContent={"center"}  justifyContent={"center"} display={{ base: "none", md: "flex" }}>
-            {LinkItems.map((link) => (
-                <NavbarLink icon={link.icon} path={link.path} name={link.name} isActive={link.isActive} />
+
+          <HStack
+            maxW={"2xl"}
+            alignContent={"center"}
+            justifyContent={"center"}
+            display={{ base: "none", md: "flex" }}
+          >
+            {tabs.map((tab) => (
+              <NavbarLink key={tab.path} setActiveTab={setActiveTab} tab={tab} isActive={activeTab.path === tab.path} />
             ))}
           </HStack>
-          
+
           <Flex flex={1} gap={2} justifyContent={"end"} alignItems={"center"}>
             <Box display={{ base: "none", lg: "flex" }}>
               <NavbarSearch />
@@ -126,7 +130,7 @@ export default function Navbar() {
           </Flex>
         </Flex>
 
-        {isOpen ? <MobileNavbar closeNav={onClose} links={LinkItems} /> : null}
+        {isOpen ? <MobileNavbar closeNav={onClose} tabs={tabs} /> : null}
       </Box>
     </>
   );

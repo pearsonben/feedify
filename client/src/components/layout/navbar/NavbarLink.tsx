@@ -1,17 +1,18 @@
+/* eslint-disable no-debugger */
 import { IconButton, Icon, Box } from "@chakra-ui/react";
-import { IconType } from "react-icons";
 import { Link } from "react-router-dom";
+import { Tab } from "../../../models/ui/tab";
 
 interface NavbarLinkProps {
-  path: string;
-  icon: IconType;
-  name: string;
-  isActive?: boolean;
+  tab: Tab,
+  setActiveTab: (tab: Tab) => void
+  isActive?: boolean
 }
 
-function NavbarLink({path, icon, isActive}: NavbarLinkProps) {
+function NavbarLink({tab, setActiveTab, isActive}: NavbarLinkProps) {
+
   return (
-    <Link to={path}>
+    <Link to={tab.path} onClick={() => setActiveTab(tab)}>
       <Box
         borderBottomWidth={isActive ? "3px" : "none"}
         borderBottomColor={"dark.50"}
@@ -27,11 +28,11 @@ function NavbarLink({path, icon, isActive}: NavbarLinkProps) {
           color={"dark.50"}
           icon={
             <Icon
-              size={"lg"}
+              size="lg"
               _groupHover={{
                 color: "white",
               }}
-              as={icon}
+              as={tab.icon}
             />
           }
         />

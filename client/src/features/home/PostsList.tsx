@@ -1,7 +1,7 @@
 import { Box, Divider, VStack, useColorModeValue } from "@chakra-ui/react";
 import PostCard from "./PostCard";
 import { PostType } from "../../enums/enums";
-import { PostComment, UserPost } from "../../models/post";
+import { PostComment, UserPost } from "../../models/api/post";
 
 
 const comments : PostComment[] = [
@@ -64,10 +64,11 @@ const posts: UserPost[] = [
 export default function PostsList() {
   return (
     <Box
-      w={"2xl"}
+      w={"2xl"} 
       sx={{ borderRadius: "4px" }}
-      p={6}
-      bg={useColorModeValue("dark.50", "dark.800")}
+      p={4}
+      bg={useColorModeValue("gray.100", "gray.900")}
+      boxShadow='base'
     >
       <VStack
         align="stretch"
@@ -75,6 +76,7 @@ export default function PostsList() {
         divider={
           <Divider
             h={1}
+            w={"100%"}
             borderColor={useColorModeValue("dark.200", "dark.50")}
           />
         }

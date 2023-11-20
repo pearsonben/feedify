@@ -1,27 +1,22 @@
 import { Box, Stack } from "@chakra-ui/react";
 import NavbarSearch from "./NavbarSearch";
-import { IconType } from "react-icons";
 import MobileNavbarLink from "./MobileNavbarLink";
+import { Tab } from "../../../models/ui/tab";
 
-interface LinkItemProps {
-  name: string;
-  icon: IconType;
-  path: string;
-}
 
 interface MobileNavbarProps {
-  links: LinkItemProps[],
+  tabs: Tab[]
   closeNav: () => void,
 }
 
-function MobileNavbar({ links, closeNav }: MobileNavbarProps) {
+function MobileNavbar({ tabs, closeNav }: MobileNavbarProps) {
   return (
     <Box pb={4} display={{ md: "none" }}>
       <Stack as={"nav"} spacing={4}>
         <NavbarSearch />
 
-        {links.map((link) => (
-          <MobileNavbarLink closeNav={closeNav} icon={link.icon} name={link.name} path={link.path} />
+        {tabs.map((tab) => (
+          <MobileNavbarLink key={tab.path} closeNav={closeNav} tab={tab} />
         ))}
       </Stack>
     </Box>

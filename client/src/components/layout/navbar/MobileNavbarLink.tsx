@@ -1,20 +1,16 @@
 import { Box, Flex, Icon } from "@chakra-ui/react";
-import { IconType } from "react-icons";
 import { Link } from "react-router-dom";
+import { Tab } from "../../../models/ui/tab";
 
 interface MobileNavbarLinkProps {
-  path: string;
-  icon: IconType;
-  name: string;
+  tab: Tab
   closeNav: () => void,
 }
 
-function MobileNavbarLink({closeNav, path, name, icon}: MobileNavbarLinkProps) {
+function MobileNavbarLink({closeNav, tab}: MobileNavbarLinkProps) {
   return (
-    <Link to={path}>
+    <Link to={tab.path}>
       <Box
-        as="a"
-        href="#"
         style={{ textDecoration: "none" }}
         _focus={{ boxShadow: "none" }}
         onClick={closeNav}
@@ -39,9 +35,9 @@ function MobileNavbarLink({closeNav, path, name, icon}: MobileNavbarLinkProps) {
             _groupHover={{
               color: "white",
             }}
-            as={icon}
+            as={tab.icon}
           />
-          {name}
+          {tab.name}
         </Flex>
       </Box>
     </Link>
