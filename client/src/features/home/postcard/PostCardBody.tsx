@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 interface PostCardBodyProps {
   content: string;
@@ -6,10 +6,8 @@ interface PostCardBodyProps {
 
 function PostCardBody({ content }: PostCardBodyProps) {
   return (
-    <Box my={4} ml={16}>
-      <Flex align={"start"} gap={2}>
+    <Box>
         <Text opacity={0.8}>{content}</Text>
-      </Flex>
     </Box>
   );
 }
