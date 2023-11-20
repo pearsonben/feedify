@@ -3,6 +3,7 @@ using System;
 using API.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Persistence.Migrations
 {
     [DbContext(typeof(FeedifyContext))]
-    partial class FeedifyContextModelSnapshot : ModelSnapshot
+    [Migration("20231120155746_ChangedUserIdToUserName")]
+    partial class ChangedUserIdToUserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.0");
@@ -33,7 +36,8 @@ namespace API.Persistence.Migrations
                     b.Property<DateTime>("SubmittedDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("UserId")
+                    b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

@@ -1,9 +1,12 @@
-﻿using API.Core;
+﻿using System.Security.Claims;
+using API.Auth;
+using API.Core;
 using API.Domain.Entities;
 using API.Features.Posts.Models;
 using API.Persistence;
 using FluentValidation;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 
 namespace API.Features.Posts.Handlers;
 
@@ -21,26 +24,24 @@ public class SubmitPostCommandValidator : AbstractValidator<SubmitPostCommand>
     }
 }
 
-public class SubmitPostCommandHandler : IRequestHandler<SubmitPostCommand, Result<SubmitPostResponse>>
+public class SubmitPostCommandHandler(FeedifyContext context, UserManager<User> userManager, IUserAccessor userAccessor)
+    : IRequestHandler<SubmitPostCommand, Result<SubmitPostResponse>>
 {
-    private readonly FeedifyContext _context;
-
-    public SubmitPostCommandHandler(FeedifyContext context)
-    {
-        _context = context;
-    }
-    
     public async Task<Result<SubmitPostResponse>> Handle(SubmitPostCommand request, CancellationToken cancellationToken)
     {
 
+        var user = userAccessor.User;
+        var userId = userManager.GetUserId(user);
+        
         var post = new Post
         {
+            UserId = Guid.Parse(userId),
             Content = request.Content
         };
 
-        _context.Posts.Add(post);
+        context.Posts.Add(post);
 
-        var successfullyUpdated = await _context.SaveChangesAsync(cancellationToken) > 0;
+        var successfullyUpdated = await context.SaveChangesAsync(cancellationToken) > 0;
 
         if (!successfullyUpdated)
         {

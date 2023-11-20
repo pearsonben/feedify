@@ -17,7 +17,13 @@ function PostCardHeader({ name }: PostCardHeaderProps) {
   return (
     <Flex w={"100%"} gap="2">
       <VStack gap={0} align={"start"} justifyContent={"start"}>
-        <Heading size="sm">{name}</Heading>
+        <Heading as={"span"} size="sm">
+          {name}{" "}
+          <Text as={"span"} opacity={0.5}>
+            {`@${name.replace(' ', '').toLocaleLowerCase()}`}
+          </Text>
+        </Heading>
+
         <Text opacity={0.5}>12 seconds ago</Text>
       </VStack>
       <Spacer />

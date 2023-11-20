@@ -29,7 +29,7 @@ function CreatePostForm() {
               bg={useColorModeValue("gray.200", "gray.800")}
               type="tel"
               border={"none"}
-              placeholder="What's happening?"
+              placeholder="Write something about..."
               _placeholder={{
                 opacity: 0.7,
                 color: useColorModeValue("dark.500", "dark.50"),
