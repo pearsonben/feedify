@@ -67,7 +67,7 @@ const posts: UserPost[] = [
 
 export default function PostsList() {
   return (
-    <Box w={"2xl"} sx={{ borderRadius: "4px" }}>
+    <Box w={"2xl"} sx={{ borderRadius: "4px" }} mb={20}>
       <VStack gap={1} align={"stretch"} spacing={0} divider={<StackDivider />}>
 
         <CreatePostForm />

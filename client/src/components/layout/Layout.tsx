@@ -4,6 +4,7 @@ import { Box, useColorModeValue } from "@chakra-ui/react";
 
 import { Outlet } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
+import BottomNavbar from "./navbar/BottomNavbar";
 
 const Layout = () => {
   return (
@@ -12,6 +13,9 @@ const Layout = () => {
       <Box pt={4}>
         <Outlet />
       </Box>
+
+      <BottomNavbar />
+
     </Box>
   );
 };
