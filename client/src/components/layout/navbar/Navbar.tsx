@@ -12,26 +12,21 @@ import {
   MenuList,
   MenuItem,
   MenuDivider,
-  useDisclosure,
   useColorModeValue,
   useColorMode,
 } from "@chakra-ui/react";
 import {
-  HamburgerIcon,
-  CloseIcon,
   MoonIcon,
   SunIcon,
   SearchIcon,
 } from "@chakra-ui/icons";
 import NavbarSearch from "./NavbarSearch";
-import MobileNavbar from "./MobileNavbar";
 
 import NavbarLogo from "./NavbarLogo";
 import NavbarLink from "./NavbarLink";
 import { useNavbarStore } from "../../../stores/navbarStore";
 
 export default function Navbar() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const { colorMode, toggleColorMode } = useColorMode();
 
   const { tabs, activeTab, setActiveTab } = useNavbarStore((state) => ({
@@ -56,13 +51,6 @@ export default function Navbar() {
           alignItems={"center"}
           h={16}
         >
-          <IconButton
-            size={"md"}
-            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
-            aria-label={"Open Menu"}
-            display={{ md: "none" }}
-            onClick={isOpen ? onClose : onOpen}
-          />
           <HStack flex={1} spacing={8} alignItems={"center"}>
             <NavbarLogo />
           </HStack>
@@ -129,8 +117,6 @@ export default function Navbar() {
             </Menu>
           </Flex>
         </Flex>
-
-        {isOpen ? <MobileNavbar closeNav={onClose} tabs={tabs} /> : null}
       </Box>
     </>
   );
