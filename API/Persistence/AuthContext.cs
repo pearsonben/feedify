@@ -10,4 +10,15 @@ public class AuthContext : IdentityDbContext<User>
     {
         
     }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+
+        builder.Entity<User>()
+            .HasMany(x => x.Followers)
+            .WithMany(x => x.Following)
+            
+        
+        base.OnModelCreating(builder);
+    }
 }

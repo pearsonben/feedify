@@ -5,5 +5,6 @@ namespace API.Auth;
 
 public class User : IdentityUser
 {
-    //public string DisplayName { get; set; }
+    public List<User> Following { get; set; } = new();
+    public List<User> Followers { get; set; } = new();
 }
